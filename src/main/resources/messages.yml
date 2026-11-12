@@ -1,0 +1,103 @@
+# ============================================================
+#   BlossomToggles  -  Messages
+# ============================================================
+# Colours: &a, &f, &l ...   Hex colours: &#F4A9C0
+# Keep words in {curly brackets} as they are. "" = message off.
+# After editing, type:  /blossomtoggles reload
+
+prefix: "&#F4A9C0&l✿ &8» &7"
+
+no-permission: "&cYou don't have permission to do that."
+players-only: "&cOnly players can use this."
+reloaded: "&aBlossomToggles reloaded."
+admin-usage: "Use &f/blossomtoggles reload"
+unknown-toggle: "&cThere is no setting called &f{toggle}&c. Type &f/settings"
+
+toggled-on: "{name} &7is now &aON&7."
+toggled-off: "{name} &7is now &cOFF&7."
+reset-done: "Your settings are back to normal."
+
+blocked-msg: "&f{player} &chas private messages turned off."
+blocked-own-msgs: "&cYou turned private messages off. Turn them on in &f/settings &cto send one."
+blocked-tpa: "&f{player} &cisn't taking TPA requests right now."
+blocked-tpahere: "&f{player} &cisn't taking TPA-here requests right now."
+
+# ------------------------------------------------------------ menu
+menu-title: "&8✿ Settings"
+menu-head-name: "&f{player}'s settings"
+menu-head-lore:
+  - "&7Click a setting to switch it."
+  - "&7Your choices are saved."
+  - ""
+  - "&7Quick way: &f/settings chat"
+menu-status: "&7Now: {state}"
+menu-click: "&#F4A9C0Click to switch"
+state-on: "&a&lON"
+state-off: "&c&lOFF"
+switch-on: "&a✔ {name}: ON"
+switch-off: "&c✘ {name}: OFF"
+menu-reset-name: "&f&lBack to normal"
+menu-reset-lore:
+  - "&7Puts every setting back"
+  - "&7to how it started."
+menu-close: "&cClose"
+
+# ------------------------------------------------------------ the settings
+toggles:
+  public-chat:
+    name: "Public Chat"
+    description:
+      - "&7See what other players say in chat."
+      - "&7Off: chat goes quiet for you."
+      - "&7Team chat still works."
+  private-messages:
+    name: "Private Messages"
+    description:
+      - "&7Let players send you &f/msg&7."
+  mention-sound:
+    name: "Mention Sound"
+    description:
+      - "&7A soft ding when someone"
+      - "&7says your name in chat."
+  tpa:
+    name: "TPA Requests"
+    description:
+      - "&7Let players send you &f/tpa&7"
+      - "&7(asking to come to you)."
+  tpahere:
+    name: "TPA-Here Requests"
+    description:
+      - "&7Let players send you &f/tpahere&7"
+      - "&7(asking you to go to them)."
+  death-messages:
+    name: "Death Messages"
+    description:
+      - "&7See when other players die."
+      - "&7You always see your own."
+  mob-spawns:
+    name: "Mob Spawns"
+    description:
+      - "&7Hostile mobs spawn near you."
+      - "&7Off: they stop, unless a player"
+      - "&7nearby still has them on."
+  phantoms:
+    name: "Phantoms"
+    description:
+      - "&7Phantoms come for you when"
+      - "&7you haven't slept."
+  night-vision:
+    name: "Night Vision"
+    description:
+      - "&7See in the dark, all the time."
+      - "&7No particles."
+  see-money:
+    name: "See Money Tags"
+    description:
+      - "&7See how much money other"
+      - "&7players have, above their name."
+  show-money:
+    name: "Show My Money"
+    description:
+      - "&7Let other players see your"
+      - "&7money above your name."
+      - "&7Off: your money stays private."

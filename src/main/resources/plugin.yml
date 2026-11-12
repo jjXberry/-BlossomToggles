@@ -1,0 +1,50 @@
+name: BlossomToggles
+version: 1.1.0
+main: com.blossomsmp.toggles.BlossomToggles
+api-version: '1.21'
+author: BlossomSMP
+description: Blossom SMP /settings menu, money tags, Petals, the Petal Shop, Petal tools and spawners.
+softdepend: [Vault, PlaceholderAPI, BlossomEconomy, BlossomSettings, BlossomTeleport, BlossomChat, DiscordSRV]
+
+commands:
+  settings:
+    description: Open your settings, or flip one with /settings <name>
+    aliases: [toggles, prefs]
+    usage: /settings [setting]
+  petals:
+    description: Check your Petals (staff can give, take, set, check)
+    aliases: [petal, shards, shard]
+    permission: blossomsettings.shards
+  petalsshop:
+    description: Open the Petal Shop
+    aliases: [ps, petalshop, pshop]
+    permission: blossomsettings.petalsshop
+  blossomtoggles:
+    description: Staff commands for BlossomToggles
+    aliases: [btoggles]
+    usage: /blossomtoggles reload
+
+permissions:
+  blossomtoggles.admin:
+    description: Use /blossomtoggles reload
+    default: op
+  blossomtoggles.bypass:
+    description: Send messages and TPA requests to players who turned them off
+    default: op
+  blossomtoggles.money.hidden:
+    description: Your money tag is never shown to anyone (give this to staff)
+    default: op
+
+  # Petals (same permission names as BlossomSettings, so nothing changes in LuckPerms)
+  blossomsettings.shards:
+    description: Check your Petals
+    default: true
+  blossomsettings.shards.admin:
+    description: Give, take, set and check other players' Petals
+    default: op
+  blossomsettings.petalsshop:
+    description: Open the Petal Shop
+    default: true
+  blossomsettings.spawners.admin:
+    description: Open, stack and break anyone's spawner
+    default: op
