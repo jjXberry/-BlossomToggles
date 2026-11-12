@@ -1,0 +1,204 @@
+# ============================================================
+#   BlossomToggles  -  the Blossom SMP /settings menu
+# ============================================================
+# Colours: &a, &f, &l ...   Hex colours: &#F4A9C0
+# Names and descriptions of every setting are in messages.yml.
+# After editing, type:  /blossomtoggles reload
+
+# ------------------------------------------------------------
+# The settings
+#   enabled  false = hidden from the menu and does nothing
+#   default  what a player has until they change it
+#   icon     the item in the menu
+# ------------------------------------------------------------
+toggles:
+  public-chat:        # see other players' chat
+    enabled: true
+    default: true
+    icon: OAK_SIGN
+  private-messages:   # get /msg from other players
+    enabled: true
+    default: true
+    icon: WRITABLE_BOOK
+  mention-sound:      # a ding when someone says your name in chat
+    enabled: true
+    default: true
+    icon: BELL
+  tpa:                # get /tpa requests
+    enabled: true
+    default: true
+    icon: ENDER_PEARL
+  tpahere:            # get /tpahere requests
+    enabled: true
+    default: true
+    icon: ENDER_EYE
+  death-messages:     # see other players' death messages
+    enabled: true
+    default: true
+    icon: SKELETON_SKULL
+  mob-spawns:         # hostile mobs spawn near you
+    enabled: true
+    default: true
+    icon: ZOMBIE_HEAD
+  phantoms:           # phantoms come for you when you don't sleep
+    enabled: true
+    default: true
+    icon: PHANTOM_MEMBRANE
+  night-vision:       # endless night vision, no particles
+    enabled: true
+    default: false
+    icon: GOLDEN_CARROT
+  see-money:          # see money tags over other players
+    enabled: true
+    default: true
+    icon: GOLD_INGOT
+  show-money:         # other players can see YOUR money tag
+    enabled: true
+    default: true
+    icon: EMERALD
+
+# ------------------------------------------------------------
+# Money tags
+# ------------------------------------------------------------
+money-tags:
+  enabled: true
+  # {balance} = short money: 950, 3.9K, 1.25M, 2B
+  format: "&#8FCB9B$&f{balance}"
+  # above = over the name.  below = just under the name, at head height.
+  position: above
+  # Fine-tune the height in blocks if it overlaps the name or another plugin's tag
+  above-offset: 0.75
+  below-offset: 0.05
+  # Players with this permission never get a money tag (staff, admins).
+  # Ops have it automatically. For LuckPerms groups:
+  #   lp group owner permission set blossomtoggles.money.hidden true
+  hide-permission: blossomtoggles.money.hidden
+  # How often the tag follows the player (ticks). 2 = smooth.
+  update-ticks: 2
+  # How often balances are read again (ticks). 20 = once a second.
+  balance-refresh-ticks: 20
+
+# ------------------------------------------------------------
+# Mob spawns
+# A hostile mob only stops spawning when EVERY player within the radius has
+# Mob Spawns off. One player can't turn spawns off for everybody.
+# ------------------------------------------------------------
+mob-spawns:
+  radius: 128
+  # Spawners, spawn eggs and commands are NOT here on purpose, so spawners keep working.
+  reasons:
+    - NATURAL
+    - JOCKEY
+    - MOUNT
+    - PATROL
+    - REINFORCEMENTS
+
+# ------------------------------------------------------------
+# Which commands each setting blocks (the first word after the player name is the target).
+# Add the commands of your own plugins here if they are called something else.
+# ------------------------------------------------------------
+commands:
+  private-messages: [msg, tell, w, whisper, m, pm, dm, message]
+  tpa: [tpa, tpask, call]
+  tpahere: [tpahere, tpah]
+
+menu:
+  # Custom switch icons from the Blossom resource pack.
+  #   auto = on when server.properties has a resource-pack link.  true / false = force.
+  custom-icons: auto
+  # These commands open this menu (also when BlossomSettings is installed)
+  commands: [settings, toggles, prefs]
+  border: PINK_STAINED_GLASS_PANE
+  filler: GRAY_STAINED_GLASS_PANE
+
+# Minecraft sound names, "" = no sound
+sounds:
+  click: "ui.button.click"
+  toggle-on: "block.note_block.pling"
+  toggle-off: "block.note_block.bass"
+  denied: "block.note_block.bass"
+  mention: "block.note_block.bell"
+
+# ============================================================
+#   Petals, the Petal Shop (/ps), Petal tools and spawners
+#   (these used to be in BlossomSettings)
+# ============================================================
+# Petals are their own currency, separate from money (/bal, BlossomEconomy).
+# Staff: /petals give|take|set|check <player> <amount>
+# Placeholders: %blossomsettings_petals%  %blossomsettings_petals_formatted%
+
+earn-petals:
+  # Petals are the /ps currency. Players earn them by playing (not AFK),
+  # killing mobs and players, and from /daily (set in BlossomEconomy).
+  playtime:
+    # Only minutes where the player actually moved count
+    minutes: 10
+    amount: 25
+  # Mobs from spawners and spawn eggs pay nothing
+  kill-hostile-mob:
+    amount: 2
+  # Killing the same player again within the cooldown pays nothing
+  kill-player:
+    amount: 30
+    same-victim-cooldown-minutes: 30
+
+# /ps prices in Petals. Set a price to 0 to hide that item.
+shard-prices:
+  blossom_pickaxe: 350        # mines 3x3, lasts 24 hours
+  petal_pickaxe: 300          # auto-smelts, lasts 24 hours
+  blossom_axe: 250            # chops faster, lasts 24 hours
+  cow_spawner: 300
+  pig_spawner: 300
+  sheep_spawner: 300
+  zombie_spawner: 500
+  skeleton_spawner: 500
+  spider_spawner: 500
+  iron_golem_spawner: 900
+  blaze_spawner: 1000
+  enderman_spawner: 1000
+
+tools:
+  # How long the /ps pickaxes and axe last before they disappear
+  lifetime-hours: 24
+  # How much faster the Blossom Axe breaks blocks (0.5 = 50% faster)
+  axe-speed-bonus: 0.5
+  # Biggest tree the Blossom Axe will chop down in one go
+  axe-max-logs: 256
+
+spawners:
+  enabled: true
+  # Most spawners you can stack into one block
+  max-stack: 64
+  # Seconds between drops (before speed upgrades)
+  base-interval-seconds: 30
+  # Items each spawner in the stack can hold (before storage upgrades)
+  base-storage: 512
+  base-xp-storage: 1000
+  xp-per-mob: 3
+  # Picking up a spawner needs a Silk Touch pickaxe (without it, nothing happens)
+  needs-silk-touch: true
+  upgrades:
+    # Shard cost of level 1, 2, 3
+    speed-costs: [250, 500, 1000]
+    # Drop time is multiplied by this at level 1, 2, 3 (0.5 = twice as fast)
+    speed-multipliers: [0.8, 0.65, 0.5]
+    storage-costs: [200, 400, 800]
+    # Storage is multiplied by this at level 1, 2, 3
+    storage-multipliers: [2, 3, 5]
+  # What each mob drops per cycle: "ITEM min max [chance%]"
+  loot:
+    COW: ["BEEF 1 3", "LEATHER 0 2"]
+    PIG: ["PORKCHOP 1 3"]
+    SHEEP: ["MUTTON 1 2", "WHITE_WOOL 1 1"]
+    CHICKEN: ["CHICKEN 1 1", "FEATHER 0 2"]
+    ZOMBIE: ["ROTTEN_FLESH 0 2", "IRON_INGOT 1 1 2.5"]
+    SKELETON: ["BONE 0 2", "ARROW 0 2"]
+    SPIDER: ["STRING 0 2", "SPIDER_EYE 1 1 33"]
+    CAVE_SPIDER: ["STRING 0 2", "SPIDER_EYE 1 1 33"]
+    CREEPER: ["GUNPOWDER 0 2"]
+    IRON_GOLEM: ["IRON_INGOT 3 5", "POPPY 0 2"]
+    BLAZE: ["BLAZE_ROD 0 1"]
+    ENDERMAN: ["ENDER_PEARL 0 1"]
+    MAGMA_CUBE: ["MAGMA_CREAM 0 1"]
+    SILVERFISH: []
+    WITCH: ["REDSTONE 0 2", "GLOWSTONE_DUST 0 2", "SUGAR 0 2"]
